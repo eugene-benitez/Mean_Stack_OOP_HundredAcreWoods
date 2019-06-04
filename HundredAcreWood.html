@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var pooh = {
+            character: "Winnie the Pooh",
+            endGame: false,
+            greet: function () {
+                console.log("Hello, my name is " + this.character);
+            }
+        };
+
+        var tigger = {
+            character: "Tigger",
+            endGame: false,
+            greet: function () {
+                console.log("Hello, my name is " + this.character);
+            }
+        };
+
+        var bees = {
+            character: "Bees",
+            endGame: false,
+            greet: function () {
+                console.log("Hello, my name is " + this.character);
+            }
+        };
+
+        var piglet = {
+            character: "Piglet",
+            endGame: false,
+            greet: function () {
+                console.log("Hello, my name is " + this.character);
+            }
+        };
+
+        var owl = {
+            character: "Owl",
+            endGame: false,
+            greet: function () {
+                console.log("Hello, my name is " + this.character);
+            }
+        };
+
+        var rabbit = {
+            character: "Rabbit",
+            endGame: false,
+            greet: function () {
+                console.log("Hello, my name is " + this.character);
+            }
+        };
+
+        var christopher = {
+            character: "Christopher",
+            endGame: false,
+            greet: function () {
+                console.log("Hello, my name is " + this.character);
+            }
+        };
+
+        var gopher = {
+            character: "Gopher",
+            endGame: false,
+            greet: function () {
+                console.log("Hello, my name is " + this.character);
+            }
+        };
+        var kanga = {
+            character: "Kanga",
+            endGame: false,
+            greet: function () {
+                console.log("Hello, my name is " + this.character);
+            }
+        };
+
+        var eeyore = {
+            character: "Eeyore",
+            endGame: false,
+            greet: function () {
+                console.log("Hello, my name is " + this.character);
+            }
+        };
+
+        var heffalumps = {
+            character: "Heffalumps",
+            endGame: false,
+            greet: function () {
+                console.log("Hello, my name is " + this.character);
+            }
+        };
+
+        var player = {
+            location: tigger,
+            honey: false,
+        }
+
+        tigger.north = pooh;
+        pooh.south = tigger;
+        pooh.east = bees;
+        pooh.west = piglet;
+        piglet.east = pooh;
+        bees.west = pooh;
+        piglet.north = owl;
+        owl.south = piglet;
+        bees.north = rabbit;
+        rabbit.south = bees;
+        pooh.north = christopher;
+        christopher.south = pooh;
+        owl.east = christopher;
+        christopher.west = owl;
+        christopher.east = rabbit;
+        rabbit.west = christopher;
+        rabbit.east = gopher;
+        gopher.west = rabbit;
+        christopher.north = kanga;
+        kanga.south = christopher;
+        kanga.north = eeyore;
+        eeyore.south = kanga;
+        eeyore.east = heffalumps;
+        heffalumps.west = eeyore;
+
+        function move(dir) {
+            if (player.location[dir] != null) {
+                player.location = player.location[dir];
+                console.log("You went up north and arrived at " + player.location.character + "'s house!");
+                player.location.greet();
+            } else {
+                console.log("You cannot go there.")
+            }
+        }
+
+        function pickUp() {
+            if (player.location == bees) {
+                player.honey = true;
+                console.log("I have picked up the honey!")
+            } else {
+                console.log("There is no honey here!")
+            }
+        }
+
+        function mission() {
+            var list = [pooh, tigger, piglet, owl, rabbit, christopher, gopher, kanga, eeyore, heffalumps];
+            var rand = Math.floor(Math.random() * list.length);
+            list[rand].endGame = true;
+            console.log("The end game is now with " + list[rand].character);
+
+        }
+
+        function drop() {
+
+            if (player.location.endGame == true) {
+                player.honey = false;
+                console.log("You win!");
+            } else {
+                console.log("You are at the wrong destination.")
+            }
+        }
+    </script>
+</body>
+
+</html>
